@@ -1,0 +1,58 @@
+<div>
+    <p><%= flash[:notice] %></p>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <h2>User Info</h2>
+            <p>画像</p>
+            <table class="table">
+                <tr>
+                    <th>name</th>
+                    <th>鉄之助</th>
+                </tr>
+                <tr>
+                    <th>introduction</th>
+                    <th>Hello</th>
+                </tr>
+            </table>
+            <div class="row">
+                <%= link_to edit_user_path(current_user.id),class:"btn btn-outline-secondary btn-block" do%>
+                <i class="fa-solid fa-user-gear" style="color: #818892;"></i>
+                <% end %>
+            </div>
+            <h2>New Book</h2>
+            <%= form_with model:@book do |f|%>
+                <div class="form-group">
+                    Title</br>
+                    <%= f.text_field :title%>
+                </div>
+                <div class="form-group">
+                    Opinion</br>
+                    <%= f.text_area :body%>
+                </div>
+                <%= f.submit"Create book",class:"btn btn-success"%>
+            <% end %>
+        </div>
+        <div class="col-md-8 offset-md-1">
+            <h2>Books</h2>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Title</th>
+                        <th>Opinion</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <% @books.each do |b|%>
+                <tbody>
+                    <th>画像</th>
+                    <th><%= link_to b.title,book_path(b.id)%></th>
+                    <th><%= b.body %></th>
+                </tbody>
+                <% end %>
+            </table>
+        </div>
+    </div>
+</div>
