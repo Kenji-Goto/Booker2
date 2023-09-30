@@ -1,5 +1,5 @@
 <div>
-    <%= flash[:notice] %>
+    <p><%= flash[:notice] %></p>
 </div>
 <div class="container">
     <dic class="row">
@@ -14,8 +14,8 @@
             </p>
             <div class="btn-wrapper col-10 mx-auto">
             <div class="row">
-            <%= link_to "Log in","/",class:"btn btn-info btn-sm btn-block mb-3"%>
-            <%= link_to "Sign up","/",class:"btn btn-success btn-sm btn-block mb-3"%>
+            <%= link_to "Log in",new_user_session_path,class:"btn btn-info btn-sm btn-block mb-3"%>
+            <%= link_to "Sign up",new_user_registration_path,class:"btn btn-success btn-sm btn-block mb-3"%>
             </div>
             </div>
         </div>
