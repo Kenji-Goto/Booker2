@@ -1,14 +1,19 @@
 class User < ApplicationRecord
+  has_many :books , dependent: :destroy
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  validates :name,presence: true
+  # :confirmable, :lockable, :timeoutable, :trackable and :
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          
-  has_many :book , dependent: :destroy
+  
+  validates :name,presence: true
+  validates :name,length: {minimum:2}
+  validates :name,length: {maximum:20}
+  validates :name,uniqueness: true
+  validates :introduction,length: {maximum:50}
   
   
-  
+
   has_one_attached :profile_image
   
   def get_profile_image(width, height)
